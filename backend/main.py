@@ -10,9 +10,6 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# --------------------------------------------------
-# API 1 → IMPORT
-# --------------------------------------------------
 
 @app.post("/deals/import", response_model=schemas.ImportResponse)
 def import_deals(items: List[schemas.RawDeal], db: Session = Depends(get_db)):
@@ -61,10 +58,6 @@ def import_deals(items: List[schemas.RawDeal], db: Session = Depends(get_db)):
     }
 
 
-# --------------------------------------------------
-# API 2 → GET /deals  (UPDATED)
-# --------------------------------------------------
-
 @app.get("/deals")
 def get_deals(
     city: Optional[str] = None,
@@ -88,7 +81,6 @@ def get_deals(
           .join(models.Tenant)\
           .join(models.Property)
 
-    # ----- Filters -----
 
     if city:
         q = q.filter(models.Property.city.ilike(f"%{city}%"))
@@ -113,7 +105,6 @@ def get_deals(
 
     total = q.count()
 
-    # ----- Pagination -----
     q = q.offset((page - 1) * page_size).limit(page_size)
 
     results = q.all()
@@ -139,9 +130,15 @@ def get_deals(
     }
 
 
-# --------------------------------------------------
-# API 3 → MARKET SUMMARY (UNCHANGED – CORRECT)
-# --------------------------------------------------
+
+@app.get("/deals/states")
+def get_states(db: Session = Depends(get_db)):
+    # Get distinct states from properties
+    states = db.query(models.Property.state).distinct().all()
+    # Flatten the result (list of tuples -> list of strings)
+    return sorted([s[0] for s in states if s[0]])
+
+
 
 @app.get("/analytics/market-summary")
 def summary(state: str, db: Session = Depends(get_db)):
