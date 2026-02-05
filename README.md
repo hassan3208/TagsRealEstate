@@ -31,7 +31,12 @@ This project demonstrates:
   - `POST /deals/import` – ingest & normalize raw JSON  
   - `GET /deals` – filtering, pagination, search  
   - `GET /analytics/market-summary` – lightweight statistics
-
+  - `GET /deals/states` – for getting all state in our database
+    
+- **Environment variable file**
+  - Add the .env file in your backend folder and just add a variabele DATABASE_URL. For your assistance i have added the .env file in the backend follder just paste your database URL from Supabase.
+ 
+    
 ### Frontend (React + TypeScript)
 
 - Import Page  
@@ -90,6 +95,15 @@ Open in browser:
   * Imported count
   * Skipped records
   * Row-level validation errors
+  make sure the data key names are valid else it will give 422 error
+    tenant: str
+    address: str
+    size: str | int
+    rent: str
+    lease_type: str
+    start_date: date
+    term_months: str | int
+    source: str 
 
 ### 2. Deals Explorer
 
@@ -108,7 +122,6 @@ Open in browser:
   * Min–Max sqft
   * Min–Max rent
   * Lease type
-  * Free-text search
 
 * Pagination & sorting supported
 
@@ -150,15 +163,15 @@ Tenant + Property + Start Date
 
 ### Import Page
 
-<img width="2875" height="1471" alt="image" src="https://github.com/user-attachments/assets/c469db3e-4e4b-487c-913f-b9fef36fa18f" />
+<img width="2879" height="1466" alt="image" src="https://github.com/user-attachments/assets/f5f12bcd-56db-49ab-bf71-376d8333d1e0" />
 
 ### Deals Explorer
 
-<img width="2879" height="1471" alt="Screenshot 2026-02-04 192521" src="https://github.com/user-attachments/assets/8c5afa05-b190-4838-9f27-2c5c549593b2" />
+<img width="2879" height="1455" alt="image" src="https://github.com/user-attachments/assets/7d152351-4791-42eb-bafc-f5e0483b827e" />
 
 ### Market Summary
 
-<img width="2879" height="1470" alt="Screenshot 2026-02-04 192642" src="https://github.com/user-attachments/assets/4ca7e54d-27ed-4d1a-b563-944b73c9e688" />
+<img width="2879" height="1444" alt="image" src="https://github.com/user-attachments/assets/484a5ded-934c-4c96-9a32-2ac57903a852" />
 
 ---
 
