@@ -95,15 +95,15 @@ Open in browser:
   * Imported count
   * Skipped records
   * Row-level validation errors
-  make sure the data key names are valid else it will give 422 error
-    tenant: str
-    address: str
-    size: str | int
-    rent: str
-    lease_type: str
-    start_date: date
-    term_months: str | int
-    source: str 
+  *   make sure the data key names are valid else it will give 422 error
+    *  tenant: str
+    *  address: str
+    *  size: str | int
+    *  rent: str
+    *  lease_type: str
+    *  start_date: date
+    *  term_months: str | int
+    *  source: str 
 
 ### 2. Deals Explorer
 
