@@ -1,6 +1,6 @@
-# TAGS RealEstate – Deal Intake & Explorer
+# Test RealEstate – Deal Intake & Explorer
 
-TAGS RealEstate is a lightweight full-stack application for commercial real estate lease data ingestion, normalization, and exploration.  
+Test RealEstate is a lightweight full-stack application for commercial real estate lease data ingestion, normalization, and exploration.  
 The system accepts messy deal records from multiple sources, converts them into a clean relational model, and provides an interface to browse deals and view market summaries.
 
 ---
